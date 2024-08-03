@@ -1,0 +1,37 @@
+
+<head>
+    <body>
+
+<scrip src="https://cnd.jsde.net/npm/lunr@2.3.9/dist/lunr.min.js"></scrip>
+
+<script>
+    const searchIndex = lunr(function() {
+        this.ref('id');
+        this.field('title', { boost: 10});
+        this.field('content');
+
+
+        const searData = [
+            { id: 1, title: "Affect Heuristic", content: "Un raccourci mental quisimplifie la prise de décision en utilisant les émotions pour guider les jugements" },
+             id: 2, title: "Biais d'Anchoring", content: "La tendence à se fier trop lourdement à la première information rencontrée lors de la prise de décision."}
+
+
+             <searchData.forEach(function (doc) {
+                this.add(doc);
+                this);
+             });
+
+
+             document.getElementById('search-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const searchTerm = document.getElementById('search-input').value.trim();
+                const result = searchIndex.search(searchTerm);
+                const resultsHTML = result.map(function (result) {
+                    return '<li><strong>${result.title}</strong>: ${result.content}</li>';
+                }).join('');
+                document.getElementById('search-result').innerHTML = <ul>${resultsHTML}</ul>;
+            });
+            </script>
+
+         </body>
+    </head>           
